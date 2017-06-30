@@ -1,0 +1,17 @@
+[Unit]
+Description=TeamSpeak 3 Voice Server
+After=network-online.target
+
+[Service]
+User=ts3
+Group=ts3
+WorkingDirectory=/opt/teamspeak/server/current/
+Type=forking
+ExecStart=/opt/teamspeak/server/current/ts3server_startscript.sh start inifile=/opt/teamspeak/server/server.ini
+ExecStop=/opt/teamspeak/server/current/ts3server_startscript.sh stop
+PIDFile=/opt/teamspeak/server/current/ts3server.pid
+RestartSec=15
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
